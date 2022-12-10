@@ -18,12 +18,10 @@ function App() {
       {!selectedUser ? <Login setSelectedUser={setSelectedUser}/>
       : <>
 
-        {selectedUser !== 'Anon' && <>
           <h2>My list</h2>
-          <List name={selectedUser} og selectedUser={selectedUser} />
+        <List name={selectedUser} og selectedUser={selectedUser} />
 
-          <h2>everyone else</h2>
-          </>}
+        <h2>everyone else</h2>
         
 
         <div className='list-wrapper'>
