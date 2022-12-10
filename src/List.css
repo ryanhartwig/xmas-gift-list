@@ -1,0 +1,40 @@
+.list {
+  margin: 20px;
+
+  max-width: 100%;
+  width: 500px;
+  border: 1px solid;
+
+  border-radius: 20px;
+
+  min-height: 500px;
+  height: fit-content;
+}
+
+.list.og {
+  max-width: 90%;
+}
+
+.list-items {
+  font-size: 22px;
+  font-weight: 200;
+  text-align: left;
+  max-width: 80%;
+  margin: 30px auto;
+
+}
+
+.list-items p {
+  margin: 10px 0;
+}
+
+.list-item {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid grey;
+
+  overflow-x: auto;
+}
