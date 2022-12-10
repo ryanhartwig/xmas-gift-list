@@ -77,7 +77,7 @@ export const List = ({name, og = false, selectedUser}: ListProps) => {
 
       {og && <form onSubmit={onAdd}>
         <input placeholder='type wot u want' value={input} onChange={(e) => setInput(e.target.value)} required></input>
-        <input type="submit" value={'Add (or press enter)'}></input>
+        <input type="submit" value={'Add (enter)'}></input>
       </form>}
 
       <div className='list-items'>

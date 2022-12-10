@@ -1,3 +1,5 @@
+import './ListItem.css';
+
 import { doc, getFirestore, setDoc } from "firebase/firestore";
 import { useCallback } from "react"
 import { app } from "./fb";
@@ -45,7 +47,10 @@ export const ListItem = ({item, og, selectedUser, data, getList}: ListItemProps)
 
       {og && <button onClick={() => removeItem(item.id)}>delete</button>}
       {!og && !item.buyer && <button onClick={() => toggleBuy(item.id)}>I'll buy this</button>}
-      {item.buyer === selectedUser && <button onClick={() => toggleBuy(item.id)}>buying(undo)</button>}
+      {item.buyer === selectedUser ? 
+        <button className="buying" onClick={() => toggleBuy(item.id)}>buying(undo)</button>
+      : item.buyer && !og ? <p style={{fontSize: '12px'}}>({item.buyer})</p> : null}
+      
       </div>
   )
 }

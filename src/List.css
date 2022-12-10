@@ -11,6 +11,21 @@
   height: fit-content;
 }
 
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+form input {
+  max-width: 80%;
+}
+
+input[type='submit'] {
+  margin-top: 10px;
+  width: fit-content;
+}
+
 .list.og {
   max-width: 90%;
 }
