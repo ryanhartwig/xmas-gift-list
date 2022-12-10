@@ -1,6 +1,5 @@
 import { doc, getFirestore, setDoc } from "firebase/firestore";
-import React, { useCallback } from "react"
-import uuid from "react-uuid";
+import { useCallback } from "react"
 import { app } from "./fb";
 import { Item } from "./List"
 
