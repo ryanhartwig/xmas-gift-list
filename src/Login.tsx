@@ -19,7 +19,7 @@ export const Login = ({setSelectedUser}: LoginProps) => {
 
       <select name="person" id="person" onChange={(e) => setUser(e.target.value)}>
         <option value="">Select a user</option>
-        {famJam.map(n => <option key={n} value={n}>{n}</option>)}
+        {[...famJam, 'Anon'].map(n => <option key={n} value={n}>{n}</option>)}
       </select>
 
       <br></br>

@@ -18,10 +18,13 @@ function App() {
       {!selectedUser ? <Login setSelectedUser={setSelectedUser}/>
       : <>
 
-        <h2>My list</h2>
-        <List name={selectedUser} og selectedUser={selectedUser} />
+        {selectedUser !== 'Anon' && <>
+          <h2>My list</h2>
+          <List name={selectedUser} og selectedUser={selectedUser} />
 
-        <h2>everyone else</h2>
+          <h2>everyone else</h2>
+          </>}
+        
 
         <div className='list-wrapper'>
         {famJam.map(n => {
