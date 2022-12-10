@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/xmas-gift-list/static/css/main.7b105aff.css",
+    "main.js": "/xmas-gift-list/static/js/main.88d43eb9.js",
+    "static/js/787.98ef506f.chunk.js": "/xmas-gift-list/static/js/787.98ef506f.chunk.js",
+    "index.html": "/xmas-gift-list/index.html",
+    "main.7b105aff.css.map": "/xmas-gift-list/static/css/main.7b105aff.css.map",
+    "main.88d43eb9.js.map": "/xmas-gift-list/static/js/main.88d43eb9.js.map",
+    "787.98ef506f.chunk.js.map": "/xmas-gift-list/static/js/787.98ef506f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7b105aff.css",
+    "static/js/main.88d43eb9.js"
+  ]
+}
