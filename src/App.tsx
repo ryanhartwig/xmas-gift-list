@@ -3,6 +3,8 @@ import './App.css';
 import { Login } from './Login';
 import { List } from './List';
 
+export const famJam = ['Chris','Ryan','Maddie','Andrew','Kevin','Brenda','Frank','Destinee'];
+
 function App() {
 
 
@@ -22,8 +24,8 @@ function App() {
         <h2>everyone else</h2>
 
         <div className='list-wrapper'>
-        {['Chris','Ryan','Madz','Andrew','Kevin','Brenda','Frank','Destinee'].map(n => {
-          return (n === selectedUser) ? <></> : <List name={n} selectedUser={selectedUser} />;
+        {famJam.map(n => {
+          return (n === selectedUser) ? <div key={n}></div> : <List name={n} selectedUser={selectedUser} key={n} />;
         })}
       </div>
       </>}

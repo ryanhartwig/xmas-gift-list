@@ -1,5 +1,9 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore';
 import './List.css';
+import { app } from './fb';
+import { ListItem } from './ListItem';
+import uuid from 'react-uuid';
 
 interface ListProps {
   name: string,
@@ -7,42 +11,65 @@ interface ListProps {
   selectedUser: string,
 }
 
-interface Item {
+export interface Doc { 
+  [key: string]: Item
+}
+
+export interface Item {
   item: string,
-  id: number,
+  id: string,
   buyer: string,
+  belongsto: string,
 }
 
 export const List = ({name, og = false, selectedUser}: ListProps) => {
 
-
-  
-  const [items, setItems] = useState<Item[]>([{item: 'yes', id: 3, buyer: ''}]);
-
   const [input, setInput] = useState<string>('');
+  const [data, setData] = useState<Item[]>([]);
+
+  const db = getFirestore(app);
+
+  const getList = useCallback(() => {
+    const getData = async () => {
+      const docRef = doc(db, 'users', name);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const data = docSnap.data() as {items: Item[]};
+        console.log(data);
+        setData([...data.items as Item[]])
+      }
+    }
+
+    getData();
+  }, [db, name]);
+
+
+  useEffect(() => {
+    getList();
+  }, [db, getList, name]);
+
 
   const onAdd = useCallback((e: any) => {
     e.preventDefault();
 
-    setItems(p => [...p, {item: input, id: Date.now(), buyer: '',}]);
+    const items = [...data, {
+      item: input,
+      id: uuid(),
+      buyer: '',
+      belongsto: name,
+    }]
+
+    const userRef = doc(db, 'users', name);
+    setDoc(userRef, { items: items});
+
+    getList();
+    
     setInput('');
-  }, [input])
+  }, [data, db, getList, input, name])
 
-  const setComplete = useCallback((id: number) => {
-    const item = {...items.find(i => i.id === id)!};
-    item.buyer = selectedUser;
 
-    const index = items.findIndex(i => i.id === id);
-    setItems(p => p.splice(index, 1, item));
-  }, [items, selectedUser]);
 
-  const undo = useCallback((id: number) => {
-    const item = {...items.find(i => i.id === id)!};
-    item.buyer = '';
-
-    const index = items.findIndex(i => i.id === id);
-    setItems(p => p.splice(index, 1, item));
-  }, [items])
   
   return (
     <div className={`list ${og ? 'og' : ''}`}>
@@ -54,13 +81,9 @@ export const List = ({name, og = false, selectedUser}: ListProps) => {
       </form>}
 
       <div className='list-items'>
-        {items.map(i => {
-        return <div className='list-item' key={i.id}>
-            <p style={{textDecoration: i.buyer && !og ? 'line-through' : ''}}>{i.item}</p>
-            {og && <button onClick={() => setItems(p => p.filter(item => item.id !== i.id))}>delete</button>}
-            {!og && !i.buyer && <button onClick={() => setComplete(i.id)}>I'll buy this</button>}
-            {i.buyer === selectedUser && <button onClick={() => undo(i.id)}>undo</button>}
-          </div>
+        {data.map(i => {
+        return <ListItem item={i} og={og} selectedUser={selectedUser} key={i.id} 
+          data={data} getList={getList}/>
         })}
       </div>
       
