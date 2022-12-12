@@ -14,11 +14,9 @@ interface ListItemProps {
 }
 
 export const ListItem = ({item, og, selectedUser, data, getList}: ListItemProps) => {
-
-
   const db = getFirestore(app);
   
-  const removeItem = useCallback((id: string) => {
+  const removeItem = useCallback(() => {
     const items = [...data].filter(i => i.id !== item.id);
 
     const userRef = doc(db, 'users', item.belongsto);
@@ -27,29 +25,33 @@ export const ListItem = ({item, og, selectedUser, data, getList}: ListItemProps)
     getList();
   }, [data, db, getList, item.belongsto, item.id]);
 
-  const toggleBuy = useCallback((id: string) => {
+  const toggleBuy = useCallback((anon: boolean = false) => {
     const items = [...data];
-    const index = items.findIndex(i => i.id === id);
+    const index = items.findIndex(i => i.id === item.id);
     const buyer = items[index].buyer;
 
     items[index].buyer = buyer ? '' : selectedUser;
+    items[index].anonymous = anon;
 
     const userRef = doc(db, 'users', item.belongsto);
     setDoc(userRef, { items: items});
 
     getList();
-  }, [data, db, getList, item.belongsto, selectedUser]);
+  }, [data, db, getList, item.belongsto, item.id, selectedUser]);
 
 
   return (
     <div className='list-item'>
       <p style={{textDecoration: item.buyer && !og ? 'line-through' : ''}}>{item.item}</p>
 
-      {og && <button onClick={() => removeItem(item.id)}>delete</button>}
-      {!og && !item.buyer && <button onClick={() => toggleBuy(item.id)}>I'll buy this</button>}
+      {og && <button onClick={() => removeItem()}>delete</button>}
+      {!og && !item.buyer && <div className='buy-options'>
+          <button onClick={() => toggleBuy()}>I'll buy this</button>
+          <button onClick={() => toggleBuy(true)}>Buy as Anon</button>
+        </div>}
       {item.buyer === selectedUser ? 
-        <button className="buying" onClick={() => toggleBuy(item.id)}>buying(undo)</button>
-      : item.buyer && !og ? <p style={{fontSize: '12px'}}>({item.buyer})</p> : null}
+        <button className="buying" onClick={() => toggleBuy()}>{item.anonymous ? 'anon' : 'buying'}(undo)</button>
+      : item.buyer && !og ? <p style={{fontSize: '12px'}}>({item.anonymous ? 'Anon' : item.buyer})</p> : null}
       
       </div>
   )

@@ -12,3 +12,18 @@ button, input[type='submit'] {
   padding: 8px;
   cursor: pointer;
 }
+
+.buy-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.buy-options button {
+  margin: 5px;
+}
+
+.buy-options button:last-of-type {
+  background: rgb(82, 55, 55);
+} 

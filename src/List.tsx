@@ -20,6 +20,7 @@ export interface Item {
   id: string,
   buyer: string,
   belongsto: string,
+  anonymous: boolean,
 }
 
 export const List = ({name, og = false, selectedUser}: ListProps) => {
