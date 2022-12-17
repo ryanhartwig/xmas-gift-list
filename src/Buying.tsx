@@ -23,7 +23,7 @@ export const Buying = ({itemsMap}: BuyingProps) => {
   return (
     <div className='Buying'>
       {items.map((i) => 
-      <div className='Buying-item'>
+      <div key={i.id} className='Buying-item'>
         <p>{i.item}</p>
         <p>for {i.belongsto}</p>
       </div>)}

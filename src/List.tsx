@@ -43,7 +43,6 @@ export const List = ({name, setMyItems, og = false, selectedUser}: ListProps) =>
 
       if (docSnap.exists()) {
         const data = docSnap.data() as {items: Item[]};
-        // console.log(data);
         setData([...data.items])
         setMyItems && setMyItems(p => {
           const map = new Map(p);
@@ -64,12 +63,6 @@ export const List = ({name, setMyItems, og = false, selectedUser}: ListProps) =>
     });
   }, [db, getList, name]);
 
-
-  // useEffect(() => {
-  //   getList();
-  // }, [db, getList, name]);
-
-
   const onAdd = useCallback((e: any) => {
     e.preventDefault();
 
@@ -83,8 +76,6 @@ export const List = ({name, setMyItems, og = false, selectedUser}: ListProps) =>
     const userRef = doc(db, 'users', name);
     setDoc(userRef, { items: items});
 
-    // getList();
-    
     setInput('');
   }, [data, db, input, name])
 

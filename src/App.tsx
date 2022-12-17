@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import { Login } from './Login';
 import { Item, List } from './List';
@@ -10,11 +10,8 @@ function App() {
 
 
   const [selectedUser, setSelectedUser] = useState<string>('');
-
   const [myItems, setMyItems] = useState<Map<string, Item[]>>(new Map())
 
-  useEffect(() => { console.log(myItems)}, [myItems])
-  
   return (
     <div className="App">
       {!selectedUser ? <Login setSelectedUser={setSelectedUser}/>
