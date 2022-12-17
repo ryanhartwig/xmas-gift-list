@@ -9,6 +9,8 @@
   font-size: calc(10px + 2vmin);
   color: white;
 
+  overflow: hidden;
+  
   min-width: 100%;
 }
 
@@ -20,7 +22,9 @@
   max-width: 100%;;
 }
 
-
+h4 {
+  margin: 5px;
+}
 
 input {
   height: 30px;
