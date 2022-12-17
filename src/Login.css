@@ -11,3 +11,8 @@
   border-radius: 20px;
   cursor: pointer;
 }
+
+.login h1 {
+  font-weight: 100;
+  font-size: 100px;
+}

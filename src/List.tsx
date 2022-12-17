@@ -5,11 +5,6 @@ import { app } from './fb';
 import { ListItem } from './ListItem';
 import uuid from 'react-uuid';
 
-interface ListProps {
-  name: string,
-  og?: boolean,
-  selectedUser: string,
-}
 
 export interface Doc { 
   [key: string]: Item
@@ -23,7 +18,14 @@ export interface Item {
   anonymous: boolean,
 }
 
-export const List = ({name, og = false, selectedUser}: ListProps) => {
+interface ListProps {
+  name: string,
+  og?: boolean,
+  selectedUser: string,
+  setMyItems?: React.Dispatch<React.SetStateAction<Map<string, Item[]>>>,
+}
+
+export const List = ({name, setMyItems, og = false, selectedUser}: ListProps) => {
 
   const [input, setInput] = useState<string>('');
   const [data, setData] = useState<Item[]>([]);
@@ -37,13 +39,20 @@ export const List = ({name, og = false, selectedUser}: ListProps) => {
 
       if (docSnap.exists()) {
         const data = docSnap.data() as {items: Item[]};
-        console.log(data);
-        setData([...data.items as Item[]])
+        // console.log(data);
+        setData([...data.items])
+        setMyItems && setMyItems(p => {
+          const map = new Map(p);
+
+          map.set(name, [...data.items.filter(i => i.buyer === selectedUser)]);
+
+          return map;
+        })
       }
     }
 
     getData();
-  }, [db, name]);
+  }, [db, name, selectedUser, setMyItems]);
 
 
   useEffect(() => {
