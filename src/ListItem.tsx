@@ -22,8 +22,8 @@ export const ListItem = ({item, og, selectedUser, data, getList}: ListItemProps)
     const userRef = doc(db, 'users', item.belongsto);
     setDoc(userRef, { items: items});
 
-    getList();
-  }, [data, db, getList, item.belongsto, item.id]);
+    // getList();
+  }, [data, db, item.belongsto, item.id]);
 
   const toggleBuy = useCallback((anon: boolean = false) => {
     const items = [...data];
@@ -36,8 +36,8 @@ export const ListItem = ({item, og, selectedUser, data, getList}: ListItemProps)
     const userRef = doc(db, 'users', item.belongsto);
     setDoc(userRef, { items: items});
 
-    getList();
-  }, [data, db, getList, item.belongsto, item.id, selectedUser]);
+    // getList();
+  }, [data, db, item.belongsto, item.id, selectedUser]);
 
 
   return (

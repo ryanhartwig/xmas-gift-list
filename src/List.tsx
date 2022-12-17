@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore';
+import { doc, getDoc, getFirestore, onSnapshot, setDoc } from 'firebase/firestore';
 import './List.css';
 import { app } from './fb';
 import { ListItem } from './ListItem';
@@ -31,6 +31,10 @@ export const List = ({name, setMyItems, og = false, selectedUser}: ListProps) =>
   const [data, setData] = useState<Item[]>([]);
 
   const db = getFirestore(app);
+  
+  
+  
+  
 
   const getList = useCallback(() => {
     const getData = async () => {
@@ -54,10 +58,16 @@ export const List = ({name, setMyItems, og = false, selectedUser}: ListProps) =>
     getData();
   }, [db, name, selectedUser, setMyItems]);
 
-
   useEffect(() => {
-    getList();
+    onSnapshot(doc(db, "users", name), (doc) => {
+      getList();
+    });
   }, [db, getList, name]);
+
+
+  // useEffect(() => {
+  //   getList();
+  // }, [db, getList, name]);
 
 
   const onAdd = useCallback((e: any) => {
@@ -73,10 +83,10 @@ export const List = ({name, setMyItems, og = false, selectedUser}: ListProps) =>
     const userRef = doc(db, 'users', name);
     setDoc(userRef, { items: items});
 
-    getList();
+    // getList();
     
     setInput('');
-  }, [data, db, getList, input, name])
+  }, [data, db, input, name])
 
 
 
