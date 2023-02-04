@@ -2,7 +2,7 @@
 
 <!-- Button Shields (only available when repo goes public)  -->
 
-![GitHub repo size](https://img.shields.io/github/repo-size/xmas-gift-list/amped?logo=GitHub&style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/ryanhartwig/xmas-gift-list?logo=GitHub&style=for-the-badge)
 
 <!-- PROJECT LOGO -->
 <br />
