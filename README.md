@@ -8,10 +8,10 @@
 <br />
 <div align="center">
 
-  <h3 align="center">Battleship</h3>
+  <h3 align="center">Wishlist</h3>
 
   <p align="center">
-    A web UI for a modified battleship game. 
+    A christmas gift list tracking application. 
     <br />
     <br />
     <a href="https://ryanhartwig.github.io/xmas-gift-list">Live Site</a>
