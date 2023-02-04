@@ -1,46 +1,110 @@
-# Getting Started with Create React App
+<div id="top"></div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- Button Shields (only available when repo goes public)  -->
 
-## Available Scripts
+![GitHub repo size](https://img.shields.io/github/repo-size/xmas-gift-list/amped?logo=GitHub&style=for-the-badge)
 
-In the project directory, you can run:
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
 
-### `yarn start`
+  <h3 align="center">Battleship</h3>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  <p align="center">
+    A web UI for a modified battleship game. 
+    <br />
+    <br />
+    <a href="https://ryanhartwig.github.io/xmas-gift-list">Live Site</a>
+    ·
+    <a href="https://github.com/ryanhartwig/xmas-gift-list/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/ryanhartwig/xmas-gift-list/issues">Request Feature</a>
+  </p>
+</div>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#technologies">Technologies</a></li>
+      </ul>
+    </li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-### `yarn test`
+<!-- ABOUT THE PROJECT -->
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## About The Project
 
-### `yarn build`
+<br><br/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This webapp was created in a pinch to allow my family to post various gift ideas for themselves, while marking off purchases they intend to make on other people's lists.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This was created as an interface for my family only, and all write priviledges have been removed.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+User's can:
 
-### `yarn eject`
+- Add or delete gift ideas of their own
+- Mark someone else's gift purchased, which will NOT show on that person's list
+- Mark an item as purchased anonymously, which will hide the buyer's name for everybody
+- In every case regardless, the item owner will never see who is purchasing any of their items
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Technologies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Libraries, frameworks & APIs used to create this app:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- [React.js](https://reactjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Firebase](https://firebase.google.com/)
 
-## Learn More
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<!-- ROADMAP -->
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Roadmap
+
+See the [open issues](https://github.com/ryanhartwig/xmas-gift-list/issues) for a full list of proposed features (and known issues).
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- CONTRIBUTING -->
+
+## Contributing
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- LICENSE -->
+
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGMENTS -->
+
+## Acknowledgments
+
+Here's a list of helpful resources used to bring this project to life:
+
+- [Unsplash](https://unsplash.com/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
