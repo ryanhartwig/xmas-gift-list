@@ -24,14 +24,14 @@
 
 .wow {
   width: auto;
-  max-height: 20vh;
+  max-height: 100px;
   border-radius: 50%;
 
   position: absolute;
   opacity: 0.5;
   rotate: 30deg;
 
-  top: 10px;
+  top: -40px;
   right: -50px;
 
   pointer-events: none;

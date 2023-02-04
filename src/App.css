@@ -1,15 +1,23 @@
 .App {
   text-align: center;
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #282c34;  
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: calc(10px + 2vmin);
   color: white;
 
-  overflow: hidden;
+  max-height: 100vh;
+  min-height: 100vh;
+
+
+  background-image: url('./assets/planks_background.jpg');
+  background-blend-mode: soft-light;
+  background-size: cover;
+
+  overflow-y: scroll;
+
   
   min-width: 100%;
 }
