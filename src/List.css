@@ -7,9 +7,10 @@
   border-radius: 20px;
 
   min-height: 500px;
-  height: fit-content;
+  max-height: 500px;
+  overflow-y: auto;
 
-  background-color: rgba(0, 0, 0, 0.38)
+  background-color: rgba(0, 0, 0, 0.38);
 }
 
 form {

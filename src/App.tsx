@@ -4,16 +4,25 @@ import { Login } from './Login';
 import { Item, List } from './List';
 import { Buying } from './Buying';
 
+import lights from './assets/—Pngtree—christmas light effect lamp string_6958731.png';
+
 export const famJam = ['Chris','Ryan','Maddie','Andrew','Kevin','Brenda','Frank','Destinee'];
 
 function App() {
-
 
   const [selectedUser, setSelectedUser] = useState<string>('');
   const [myItems, setMyItems] = useState<Map<string, Item[]>>(new Map())
 
   return (
     <div className="App">
+      <div className='lights-wrapper'>
+        <img className='lights' draggable="false" alt="christmas lights" src={lights} />
+        <img className='lights' draggable="false" alt="christmas lights" src={lights} />
+        <img className='lights' draggable="false" alt="christmas lights" src={lights} />
+        <img className='lights' draggable="false" alt="christmas lights" src={lights} />
+        <img className='lights' draggable="false" alt="christmas lights" src={lights} />
+        <img className='lights' draggable="false" alt="christmas lights" src={lights} />
+      </div>
       {!selectedUser ? <Login setSelectedUser={setSelectedUser}/>
       : <>
           <h2>My list</h2>

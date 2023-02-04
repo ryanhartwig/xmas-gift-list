@@ -7,9 +7,10 @@
 
   max-width: calc(100% - 20px);
   width: 500px;
-  border: 1px solid;
 
   border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.38);
+
 
   height: fit-content;
 }

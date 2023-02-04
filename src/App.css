@@ -7,8 +7,10 @@
   font-size: calc(10px + 2vmin);
   color: white;
 
-  max-height: 100vh;
-  min-height: 100vh;
+
+
+  height: calc(100vh - 80px);
+  margin-top: 80px;
 
 
   background-color: #44362ddd;  
@@ -16,9 +18,9 @@
   background-blend-mode: soft-light;
   background-size: cover;
 
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
 
-  
   min-width: 100%;
 }
 
@@ -39,4 +41,20 @@ input {
   width: 250px;
   padding: 5px 20px;
   border-radius: 20px;
+}
+
+.lights-wrapper {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+}
+
+.lights {
+  height: 180px;
+  rotate: -3.8deg;
+  opacity: 0.7;
+  z-index: 0;
 }
