@@ -79,16 +79,13 @@ export const List = ({name, setMyItems, og = false, selectedUser}: ListProps) =>
     setInput('');
   }, [data, db, input, name])
 
-
-
-  
   return (
     <div className={`list ${og ? 'og' : ''}`}>
       <h4>{name}</h4>
 
       {og && <form onSubmit={onAdd}>
-        <input placeholder='type wot u want' value={input} onChange={(e) => setInput(e.target.value)} required></input>
-        <input type="submit" value={'Add (enter)'}></input>
+        <input placeholder='Enter a gift idea!' value={input} onChange={(e) => setInput(e.target.value)} required></input>
+        <input type="submit" style={{padding: '0px 65px'}} value={'Add'}></input>
       </form>}
 
       <div className='list-items'>
