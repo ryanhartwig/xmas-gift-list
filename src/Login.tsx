@@ -28,8 +28,6 @@ export const Login = ({setSelectedUser}: LoginProps) => {
 
       <br></br>
       {user && <button className='login-go' onClick={() => setSelectedUser(user)}>Go ({user})</button>}
-
-      <p>All writing operations have been revoked</p>
     </div>
   )
 }
