@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/xmas-gift-list/static/css/main.8bc6781f.css",
-    "main.js": "/xmas-gift-list/static/js/main.03bc5c18.js",
+    "main.js": "/xmas-gift-list/static/js/main.3097f5ff.js",
     "static/js/787.98ef506f.chunk.js": "/xmas-gift-list/static/js/787.98ef506f.chunk.js",
     "static/media/planks_background.jpg": "/xmas-gift-list/static/media/planks_background.ee32cddde57a186bd3a8.jpg",
     "static/media/—Pngtree—christmas light effect lamp string_6958731.png": "/xmas-gift-list/static/media/—Pngtree—christmas light effect lamp string_6958731.ca2bd4fce29eb10506c5.png",
     "index.html": "/xmas-gift-list/index.html",
     "main.8bc6781f.css.map": "/xmas-gift-list/static/css/main.8bc6781f.css.map",
-    "main.03bc5c18.js.map": "/xmas-gift-list/static/js/main.03bc5c18.js.map",
+    "main.3097f5ff.js.map": "/xmas-gift-list/static/js/main.3097f5ff.js.map",
     "787.98ef506f.chunk.js.map": "/xmas-gift-list/static/js/787.98ef506f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8bc6781f.css",
-    "static/js/main.03bc5c18.js"
+    "static/js/main.3097f5ff.js"
   ]
 }
