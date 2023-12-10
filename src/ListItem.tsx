@@ -1,15 +1,26 @@
 import './ListItem.css';
 
 import { doc, getFirestore, setDoc } from "firebase/firestore";
-import { useCallback } from "react"
+import { useCallback, useMemo } from "react"
 import { app } from "./fb";
 import { Item } from "./List"
 
-import { Typography, styled } from '@mui/material';
+import { Link, Typography, styled } from '@mui/material';
 
-const ItemText = styled(Typography)<{crossed?: boolean}>(({crossed}) => ({
+const ItemText = styled(Link)<{crossed?: boolean}>(({crossed}) => ({
   textDecoration: crossed ? 'line-through' : '',
+  flexShrink: 1,
+  whiteSpace: 'wrap',
+  maxWidth: '80%',
+  wordBreak: 'break-word',
+  fontSize: 16,
 }));
+
+const extractUrl = (text: string): string | null => {
+  const urlRegex = /(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+  const match = text.match(urlRegex);
+  return match ? match[0] : null;
+};
 
 interface ListItemProps {
   item: Item,
@@ -18,7 +29,6 @@ interface ListItemProps {
   data: Item[],
   getList: () => void,
 }
-
 
 export const ListItem = ({item, og, selectedUser, data, getList}: ListItemProps) => {
   const db = getFirestore(app);
@@ -42,11 +52,16 @@ export const ListItem = ({item, og, selectedUser, data, getList}: ListItemProps)
     setDoc(userRef, { items: items});
   }, [data, db, item.belongsto, item.id, selectedUser]);
 
+  const href = useMemo(() => extractUrl(item.item), [item.item]);
 
-  console.log(crypto.randomUUID());
   return (
     <div className='list-item'>
-      <ItemText crossed={!!item.buyer && !og}>
+      <ItemText
+        underline='hover'
+        target='_blank'
+        href={href || undefined}
+        as={href ? undefined : Typography}
+      >
         {item.item}
       </ItemText>
 
@@ -58,7 +73,7 @@ export const ListItem = ({item, og, selectedUser, data, getList}: ListItemProps)
       {item.buyer === selectedUser ? 
         <button className="buying" onClick={() => toggleBuy()}>{item.anonymous ? 'anon' : 'buying'}(undo)</button>
       : item.buyer && !og ? <p style={{fontSize: '12px'}}>({item.anonymous ? 'Anon' : item.buyer})</p> : null}
-      
-      </div>
+    
+    </div>
   )
 }
