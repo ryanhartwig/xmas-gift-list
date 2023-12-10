@@ -3,8 +3,6 @@ import { doc, getDoc, getFirestore, onSnapshot, setDoc } from 'firebase/firestor
 import './List.css';
 import { app } from './fb';
 import { ListItem } from './ListItem';
-import uuid from 'react-uuid';
-
 
 export interface Doc { 
   [key: string]: Item
@@ -33,9 +31,6 @@ export const List = ({name, setMyItems, og = false, selectedUser}: ListProps) =>
   const db = getFirestore(app);
   
   
-  
-  
-
   const getList = useCallback(() => {
     const getData = async () => {
       const docRef = doc(db, 'users', name);
@@ -68,7 +63,7 @@ export const List = ({name, setMyItems, og = false, selectedUser}: ListProps) =>
 
     const items = [...data, {
       item: input,
-      id: uuid(),
+      id: crypto.randomUUID(),
       buyer: '',
       belongsto: name,
     }]

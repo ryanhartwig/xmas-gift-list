@@ -5,6 +5,12 @@ import { useCallback } from "react"
 import { app } from "./fb";
 import { Item } from "./List"
 
+import { Typography, styled } from '@mui/material';
+
+const ItemText = styled(Typography)<{crossed?: boolean}>(({crossed}) => ({
+  textDecoration: crossed ? 'line-through' : '',
+}));
+
 interface ListItemProps {
   item: Item,
   og: boolean,
@@ -12,6 +18,7 @@ interface ListItemProps {
   data: Item[],
   getList: () => void,
 }
+
 
 export const ListItem = ({item, og, selectedUser, data, getList}: ListItemProps) => {
   const db = getFirestore(app);
@@ -36,9 +43,12 @@ export const ListItem = ({item, og, selectedUser, data, getList}: ListItemProps)
   }, [data, db, item.belongsto, item.id, selectedUser]);
 
 
+  console.log(crypto.randomUUID());
   return (
     <div className='list-item'>
-      <p style={{textDecoration: item.buyer && !og ? 'line-through' : ''}}>{item.item}</p>
+      <ItemText crossed={!!item.buyer && !og}>
+        {item.item}
+      </ItemText>
 
       {og && <button onClick={() => removeItem()}>delete</button>}
       {!og && !item.buyer && <div className='buy-options'>
