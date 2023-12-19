@@ -61,6 +61,7 @@ export const ListItem = ({item, og, selectedUser, data, getList}: ListItemProps)
         target='_blank'
         href={href || undefined}
         as={href ? undefined : Typography}
+        crossed={!og && !!item.buyer}
       >
         {item.item}
       </ItemText>
