@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import './App.css';
 import { Login } from './Login';
 import { Item, List } from './List';
@@ -11,7 +11,20 @@ export const famJam = ['Chris','Ryan','Maddie','Andrew','Kevin','Brenda','Frank'
 function App() {
 
   const [selectedUser, setSelectedUser] = useState<string>('');
-  const [myItems, setMyItems] = useState<Map<string, Item[]>>(new Map())
+  const [myItems, setMyItems] = useState<Map<string, Item[]>>(new Map());
+
+  useLayoutEffect(() => {
+    const user = localStorage.getItem('user');
+    if (user) {
+      setSelectedUser(user);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (selectedUser) {
+      localStorage.setItem('user', selectedUser);
+    }
+  }, [selectedUser]);
 
   return (
     <div className="App">
@@ -26,7 +39,7 @@ function App() {
       {!selectedUser ? <Login setSelectedUser={setSelectedUser}/>
       : <>
           <h2>My list</h2>
-          <List name={selectedUser} og selectedUser={selectedUser} />
+          <List name={selectedUser} og selectedUser={selectedUser} setSelectedUser={setSelectedUser} />
 
           <h4>* My purchases *</h4>
           <Buying itemsMap={myItems} />

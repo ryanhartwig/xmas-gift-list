@@ -21,9 +21,10 @@ interface ListProps {
   og?: boolean,
   selectedUser: string,
   setMyItems?: React.Dispatch<React.SetStateAction<Map<string, Item[]>>>,
+  setSelectedUser?: React.Dispatch<React.SetStateAction<string>>,
 }
 
-export const List = ({name, setMyItems, og = false, selectedUser}: ListProps) => {
+export const List = ({name, setMyItems, og = false, selectedUser, setSelectedUser}: ListProps) => {
 
   const [input, setInput] = useState<string>('');
   const [data, setData] = useState<Item[]>([]);
@@ -53,7 +54,7 @@ export const List = ({name, setMyItems, og = false, selectedUser}: ListProps) =>
   }, [db, name, selectedUser, setMyItems]);
 
   useEffect(() => {
-    onSnapshot(doc(db, "users", name), (doc) => {
+    return onSnapshot(doc(db, "users", name), (doc) => {
       getList();
     });
   }, [db, getList, name]);
@@ -76,7 +77,7 @@ export const List = ({name, setMyItems, og = false, selectedUser}: ListProps) =>
 
   return (
     <div className={`list ${og ? 'og' : ''}`}>
-      <h4>{name}</h4>
+      <h4>{name}{setSelectedUser && (<button onClick={() => setSelectedUser('')}>Change</button>)}</h4>
 
       {og && <form onSubmit={onAdd}>
         <input placeholder='Enter a gift idea!' value={input} onChange={(e) => setInput(e.target.value)} required></input>
