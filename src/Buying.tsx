@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
+
 import './Buying.css';
 import { Item } from './List';
 
 interface BuyingProps {
-  itemsMap: Map<string, Item[]>,
+  itemsMap: Map<string, Item[]>;
 }
 
-export const Buying = ({itemsMap}: BuyingProps) => {
-
+export const Buying = ({ itemsMap }: BuyingProps) => {
   const [items, setItems] = useState<Item[]>([]);
-
 
   useEffect(() => {
     const arr: Item[] = [];
@@ -22,11 +21,12 @@ export const Buying = ({itemsMap}: BuyingProps) => {
 
   return (
     <div className='Buying'>
-      {items.map((i) => 
-      <div key={i.id} className='Buying-item'>
-        <p>{i.item}</p>
-        <p>for {i.belongsto}</p>
-      </div>)}
+      {items.map(i => (
+        <div key={i.id} className='Buying-item'>
+          <p>{i.item}</p>
+          <p>for {i.belongsto}</p>
+        </div>
+      ))}
     </div>
-  )
-}
+  );
+};
