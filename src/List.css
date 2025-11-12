@@ -1,16 +1,46 @@
 .list {
-  margin: 20px;
-
+  margin: 15px;
   max-width: 100%;
-  width: 500px;
-
+  width: 380px;
   border-radius: 20px;
-
-  min-height: 500px;
-  max-height: 500px;
+  min-height: 450px;
+  max-height: 600px;
   overflow-y: auto;
 
-  background-color: rgba(0, 0, 0, 0.38);
+  background: linear-gradient(
+    145deg,
+    rgba(248, 246, 240, 0.95) 0%,
+    rgba(248, 246, 240, 0.85) 100%
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+
+  transition: all 0.3s ease;
+}
+
+.list:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.list h4 {
+  color: var(--christmas-dark-green);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 20px 0 15px 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
 }
 
 form {
@@ -18,30 +48,36 @@ form {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 20px;
 }
+
 form input {
-  max-width: 80%;
+  max-width: 90%;
+  margin-bottom: 15px;
 }
 
 input[type='submit'] {
   margin-top: 10px;
   width: fit-content;
+  min-width: 120px;
 }
 
 .list.og {
-  max-width: 90%;
+  max-width: 95%;
+  width: 500px;
 }
 
 .list-items {
-  font-size: 22px;
-  font-weight: 200;
+  font-size: 18px;
+  font-weight: 400;
   text-align: left;
-  max-width: 80%;
-  margin: 30px auto;
+  max-width: 90%;
+  margin: 20px auto 30px auto;
+  color: var(--christmas-dark-green);
 }
 
 .list-items p {
-  margin: 10px 0;
+  margin: 12px 0;
 }
 
 .list-item {
@@ -50,7 +86,41 @@ input[type='submit'] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid grey;
-
+  border-top: 1px solid rgba(45, 90, 61, 0.2);
+  padding: 12px 0;
   overflow-x: hidden;
+  transition: all 0.2s ease;
+}
+
+.list-item:hover {
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 8px;
+  padding: 12px 8px;
+  margin: 0 -8px;
+}
+
+.list-item:last-child {
+  border-bottom: 1px solid rgba(45, 90, 61, 0.2);
+}
+
+/* Custom scrollbar */
+.list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.list::-webkit-scrollbar-track {
+  background: rgba(45, 90, 61, 0.1);
+  border-radius: 10px;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background: var(--christmas-gold);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.list::-webkit-scrollbar-thumb:hover {
+  background: var(--christmas-red);
+  background-clip: content-box;
 }

@@ -92,18 +92,16 @@ function App() {
 
           <h2>everyone else</h2>
           <div className='list-wrapper'>
-            {famJam.map(n => {
-              return n === selectedUser ? (
-                <div key={n}></div>
-              ) : (
+            {famJam
+              .filter(n => n !== selectedUser)
+              .map(n => (
                 <List
                   setMyItems={setMyItems}
                   name={n}
                   selectedUser={selectedUser}
                   key={n}
                 />
-              );
-            })}
+              ))}
           </div>
         </>
       )}

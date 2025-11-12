@@ -2,31 +2,89 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-
   margin: 20px auto;
-
-  max-width: calc(100% - 20px);
+  max-width: calc(100% - 40px);
   width: 500px;
-
   border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.38);
-
   height: fit-content;
+  padding: 25px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(248, 246, 240, 0.95) 0%,
+    rgba(248, 246, 240, 0.85) 100%
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+
+  transition: all 0.3s ease;
+}
+
+.Buying:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .Buying-item {
   display: flex;
   justify-content: space-between;
-  margin: 10px 5px;
-  border-bottom: 1px solid grey;
+  align-items: center;
+  margin: 8px 0;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(45, 90, 61, 0.2);
+  transition: all 0.2s ease;
+}
+
+.Buying-item:hover {
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 8px;
+  padding: 15px 12px;
+  margin: 8px -12px;
+}
+
+.Buying-item:last-child {
+  border-bottom: none;
 }
 
 .Buying p {
   margin: 0;
-  font-weight: 100;
-  font-size: 11px;
+  color: var(--christmas-dark-green);
 }
+
 .Buying-item > p:first-of-type {
-  font-weight: 200;
-  font-size: 20px;
+  font-weight: 500;
+  font-size: 18px;
+  flex: 1;
+  margin-right: 15px;
+}
+
+.Buying-item > p:last-of-type {
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--christmas-red);
+  background: rgba(196, 30, 58, 0.1);
+  padding: 4px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(196, 30, 58, 0.2);
+  white-space: nowrap;
+}
+
+/* Empty state styling */
+.Buying:empty::before {
+  content: 'No purchases yet! 🎁';
+  color: var(--christmas-dark-green);
+  font-style: italic;
+  text-align: center;
+  opacity: 0.6;
+  font-size: 16px;
+  padding: 20px;
+  display: block;
 }

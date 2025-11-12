@@ -1,16 +1,60 @@
 .buying {
-  background: rgb(58, 82, 55);
+  background: linear-gradient(
+    135deg,
+    var(--christmas-green) 0%,
+    var(--christmas-light-green) 100%
+  );
+  border: 1px solid var(--christmas-gold);
+  box-shadow:
+    0 4px 12px rgba(45, 90, 61, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.buying:hover {
+  background: linear-gradient(
+    135deg,
+    var(--christmas-light-green) 0%,
+    var(--christmas-green) 100%
+  );
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 16px rgba(45, 90, 61, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 button,
 input[type='submit'] {
-  background: rgb(82, 55, 82);
-  color: white;
+  background: linear-gradient(135deg, var(--christmas-red) 0%, #a91b3a 100%);
+  color: var(--christmas-cream);
   outline: none;
-  border: none;
-  border-radius: 10px;
-  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 10px 16px;
   cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+
+  box-shadow:
+    0 4px 12px rgba(196, 30, 58, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+button:hover,
+input[type='submit']:hover {
+  background: linear-gradient(135deg, #d42c4a 0%, var(--christmas-red) 100%);
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 16px rgba(196, 30, 58, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+button:active,
+input[type='submit']:active {
+  transform: translateY(0);
+  box-shadow:
+    0 2px 8px rgba(196, 30, 58, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .buy-options {
@@ -18,12 +62,48 @@ input[type='submit'] {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  gap: 8px;
 }
 
 .buy-options button {
-  margin: 5px;
+  margin: 0;
+  min-width: 120px;
+  font-size: 13px;
 }
 
 .buy-options button:last-of-type {
-  background: rgb(82, 55, 55);
+  background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.buy-options button:last-of-type:hover {
+  background: linear-gradient(135deg, #a0522d 0%, #8b4513 100%);
+  border: 1px solid var(--christmas-gold);
+}
+
+/* Delete button styling */
+.list.og button {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  font-size: 12px;
+  padding: 6px 12px;
+  min-width: 80px;
+}
+
+.list.og button:hover {
+  background: linear-gradient(135deg, #e74c3c 0%, #dc3545 100%);
+}
+
+/* Change button styling */
+.list h4 button {
+  background: linear-gradient(135deg, var(--christmas-gold) 0%, #e6c200 100%);
+  color: var(--christmas-dark-green);
+  font-size: 12px;
+  padding: 6px 12px;
+  font-weight: 600;
+  border: 1px solid rgba(45, 90, 61, 0.2);
+}
+
+.list h4 button:hover {
+  background: linear-gradient(135deg, #ffed4e 0%, var(--christmas-gold) 100%);
+  transform: translateY(-1px);
 }

@@ -1,44 +1,124 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 40px 20px;
+}
+
 .login select {
-  padding: 10px 80px;
-  border-radius: 20px;
+  padding: 12px 80px;
+  border-radius: 25px;
   cursor: pointer;
+  background: var(--glass-bg);
+  border: 2px solid var(--christmas-gold);
+  color: var(--christmas-dark-green);
+  font-weight: 500;
 }
 
 .fam-list {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 12px;
+  margin-top: 30px;
+  max-width: 300px;
+  width: 100%;
 }
 
 .login-go {
-  padding: 10px 80px;
-  border-radius: 20px;
+  padding: 15px 40px;
+  border-radius: 25px;
   cursor: pointer;
-  background: rgb(75, 118, 94);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(
+    135deg,
+    var(--christmas-green) 0%,
+    var(--christmas-light-green) 100%
+  );
+  border: 2px solid var(--christmas-gold);
+  color: var(--christmas-cream);
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+
+  box-shadow:
+    0 6px 20px rgba(45, 90, 61, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.login-go:hover {
+  background: linear-gradient(
+    135deg,
+    var(--christmas-light-green) 0%,
+    var(--christmas-green) 100%
+  );
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 25px rgba(45, 90, 61, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border-color: var(--christmas-cream);
+}
+
+.login-go:active {
+  transform: translateY(-1px);
+  box-shadow:
+    0 4px 15px rgba(45, 90, 61, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .login h1 {
-  font-weight: 100;
-  font-size: 80px;
+  font-weight: 300;
+  font-size: clamp(60px, 8vw, 100px);
+  margin-bottom: 20px;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+  letter-spacing: 2px;
+}
+
+.login h2 {
+  color: var(--christmas-cream);
+  font-weight: 300;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .login p {
-  font-weight: 200;
+  font-weight: 300;
   font-size: 18px;
+  color: var(--christmas-cream);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .wow {
   width: auto;
   max-height: 100px;
   border-radius: 50%;
-
   position: absolute;
-  opacity: 0.5;
+  opacity: 0.6;
   rotate: 30deg;
-
   top: -40px;
   right: -50px;
-
   pointer-events: none;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* Add some festive animations */
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.login h1 span:nth-child(odd) {
+  animation: twinkle 2s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.login h1 span:nth-child(even) {
+  animation: twinkle 2s ease-in-out infinite;
+  animation-delay: 1s;
 }
