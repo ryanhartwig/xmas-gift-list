@@ -9,6 +9,7 @@ import { Login } from './Login';
 export const famJam = [
   'Chris',
   'Ryan',
+  'Ruby',
   'Maddie',
   'Andrew',
   'Kevin',

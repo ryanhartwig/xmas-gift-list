@@ -33,7 +33,11 @@ export const Login = ({ setSelectedUser }: LoginProps) => {
           .sort((a, b) => a.localeCompare(b))
           .map(n => {
             return (
-              <button className='login-go' onClick={() => setSelectedUser(n)}>
+              <button
+                key={n}
+                className='login-go'
+                onClick={() => setSelectedUser(n)}
+              >
                 {n}
               </button>
             );
