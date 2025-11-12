@@ -7,13 +7,10 @@
   font-size: calc(10px + 2vmin);
   color: white;
 
-
-
   height: calc(100vh - 80px);
   margin-top: 80px;
 
-
-  background-color: #44362ddd;  
+  background-color: #44362ddd;
   background-image: url('./assets/planks_background.jpg');
   background-blend-mode: soft-light;
   background-size: cover;
@@ -27,9 +24,9 @@
 .list-wrapper {
   display: flex;
   justify-content: center;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   align-items: center;
-  max-width: 100%;;
+  max-width: 100%;
 }
 
 h4 {

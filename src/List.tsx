@@ -1,97 +1,139 @@
+import {
+  doc,
+  getDoc,
+  getFirestore,
+  onSnapshot,
+  setDoc,
+} from 'firebase/firestore';
 import { useCallback, useEffect, useState } from 'react';
-import { doc, getDoc, getFirestore, onSnapshot, setDoc } from 'firebase/firestore';
+
 import './List.css';
 import { app } from './fb';
 import { ListItem } from './ListItem';
 
-export interface Doc { 
-  [key: string]: Item
+export interface Doc {
+  [key: string]: Item;
 }
 
 export interface Item {
-  item: string,
-  id: string,
-  buyer: string,
-  belongsto: string,
-  anonymous: boolean,
+  item: string;
+  id: string;
+  buyer: string;
+  belongsto: string;
+  anonymous: boolean;
 }
 
 interface ListProps {
-  name: string,
-  og?: boolean,
-  selectedUser: string,
-  setMyItems?: React.Dispatch<React.SetStateAction<Map<string, Item[]>>>,
-  setSelectedUser?: React.Dispatch<React.SetStateAction<string>>,
+  name: string;
+  og?: boolean;
+  selectedUser: string;
+  setMyItems?: React.Dispatch<React.SetStateAction<Map<string, Item[]>>>;
+  setSelectedUser?: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const List = ({name, setMyItems, og = false, selectedUser, setSelectedUser}: ListProps) => {
-
+export const List = ({
+  name,
+  setMyItems,
+  og = false,
+  selectedUser,
+  setSelectedUser,
+}: ListProps) => {
   const [input, setInput] = useState<string>('');
   const [data, setData] = useState<Item[]>([]);
 
   const db = getFirestore(app);
-  
-  
+
   const getList = useCallback(() => {
     const getData = async () => {
       const docRef = doc(db, 'users', name);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        const data = docSnap.data() as {items: Item[]};
-        setData([...data.items])
-        setMyItems && setMyItems(p => {
-          const map = new Map(p);
+        const data = docSnap.data() as { items: Item[] };
+        setData([...data.items]);
+        setMyItems &&
+          setMyItems(p => {
+            const map = new Map(p);
 
-          map.set(name, [...data.items.filter(i => i.buyer === selectedUser)]);
+            map.set(name, [
+              ...data.items.filter(i => i.buyer === selectedUser),
+            ]);
 
-          return map;
-        })
+            return map;
+          });
       }
-    }
+    };
 
     getData();
   }, [db, name, selectedUser, setMyItems]);
 
   useEffect(() => {
-    return onSnapshot(doc(db, "users", name), (doc) => {
+    return onSnapshot(doc(db, 'users', name), doc => {
       getList();
     });
   }, [db, getList, name]);
 
-  const onAdd = useCallback((e: any) => {
-    e.preventDefault();
+  const onAdd = useCallback(
+    (e: any) => {
+      e.preventDefault();
 
-    const items = [...data, {
-      item: input,
-      id: crypto.randomUUID(),
-      buyer: '',
-      belongsto: name,
-    }]
+      const items = [
+        ...data,
+        {
+          item: input,
+          id: crypto.randomUUID(),
+          buyer: '',
+          belongsto: name,
+        },
+      ];
 
-    const userRef = doc(db, 'users', name);
-    setDoc(userRef, { items: items});
+      const userRef = doc(db, 'users', name);
+      setDoc(userRef, { items: items });
 
-    setInput('');
-  }, [data, db, input, name])
+      setInput('');
+    },
+    [data, db, input, name]
+  );
 
   return (
     <div className={`list ${og ? 'og' : ''}`}>
-      <h4>{name}{setSelectedUser && (<button onClick={() => setSelectedUser('')}>Change</button>)}</h4>
+      <h4>
+        {name}
+        {setSelectedUser && (
+          <button onClick={() => setSelectedUser('')}>Change</button>
+        )}
+      </h4>
 
-      {og && <form onSubmit={onAdd}>
-        <input placeholder='Enter a gift idea!' value={input} onChange={(e) => setInput(e.target.value)} required></input>
-        <input type="submit" style={{padding: '0px 65px'}} value={'Add'}></input>
-      </form>}
+      {og && (
+        <form onSubmit={onAdd}>
+          <input
+            placeholder='Enter a gift idea!'
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            required
+          ></input>
+          <input
+            type='submit'
+            style={{ padding: '0px 65px' }}
+            value={'Add'}
+          ></input>
+        </form>
+      )}
 
       <div className='list-items'>
         {data.map(i => {
-        return <ListItem item={i} og={og} selectedUser={selectedUser} key={i.id} 
-          data={data} getList={getList}/>
+          return (
+            <ListItem
+              item={i}
+              og={og}
+              selectedUser={selectedUser}
+              key={i.id}
+              data={data}
+              getList={getList}
+            />
+          );
         })}
       </div>
-      
     </div>
-  )
-  
-}
+  );
+};
