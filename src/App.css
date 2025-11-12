@@ -25,9 +25,9 @@
 .App h2 {
   color: var(--christmas-cream);
   text-shadow: 2px 2px 4px var(--shadow-dark);
-  font-weight: 300;
+  font-weight: 500;
   margin: 30px 0 20px 0;
-  font-size: 2.2rem;
+  font-size: 3rem;
 }
 
 .App h4 {
@@ -35,7 +35,7 @@
   text-shadow: 1px 1px 2px var(--shadow-dark);
   font-weight: 400;
   margin: 25px 0 15px 0;
-  font-size: 1.4rem;
+  font-size: 2.2rem;
 }
 
 .list-wrapper {
